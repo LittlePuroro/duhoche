@@ -260,12 +260,12 @@
 </div>
 <!--footer-->
 <!-- Modal Structure -->
-<div id="dk-modal" class="modal modal-fixed-footer light-blue lighten-5">
+<div id="dk-modal" class="modal light-blue lighten-5">
     <div class="modal-header"><h4>ĐĂNG KÝ TƯ VẤN</h4></div>
     <div class="divider"></div>
     <div class="modal-content" style="padding-bottom: 0; padding-top: 0">
         <div class="row">
-            <form class="col s12" id="dk-form" name="dk-form" method="get">
+            <form class="col s12 dk-form" id="dk-form" name="dk-form" method="get">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
@@ -288,6 +288,7 @@
                             <option value="Học sinh Tiểu học">Học sinh Tiểu học</option>
                             <option value="Học sinh THCS">Học sinh THCS</option>
                             <option value="Học sinh THPT">Học sinh THPT</option>
+                            <option value="Phụ huynh">Phụ huynh</option>
                             <option value="Khác">Khác</option>
                         </select>
                         <label>Bạn là</label>
@@ -366,10 +367,9 @@
                             <span class="caret">▼</span>
                             <a id="ctdh" name="ctdh" class='dropdown-button select-dropdown' href='#'
                                data-activates='chuongtrinh' type="text" onchange="checkbx(this.form)">
-
                             </a>
                         </div>
-                        <ul id="chuongtrinh" class="dropdown-content validate">
+                        <ul id="chuongtrinh" class="dropdown-content validate chuongtrinh">
                             <li>
                                 <input type="checkbox" id="dhmy" name="dh[]" value="Du học hè Mỹ"/>
                                 <label for="dhmy">Du học hè Mỹ</label>
@@ -392,9 +392,9 @@
                     <div class="input-field col s12 m6">
                         <div class="select-wrapper">
                             <span class="caret">▼</span>
-                            <a id="a_hinhthucdh" class='dropdown-button select-dropdown' href='#' data-activates='hinhthucdh'></a>
+                            <a id="a_hinhthucdh" name="a_hinhthucdh" class='dropdown-button select-dropdown' href='#' data-activates='hinhthucdh' type="text" onchange="textbx(this.form)"></a>
                         </div>
-                        <ul id='hinhthucdh' class='dropdown-content validate'>
+                        <ul id='hinhthucdh' class='dropdown-content validate hinhthucdh'>
                             <li>
                                 <input type="checkbox" id="canhan" name="chk[]" value="Đi cá nhân"/>
                                 <label for="canhan">Đi cá nhân</label>
@@ -413,9 +413,6 @@
                             <option value="2 tuần">2 tuần</option>
                             <option value="3 tuần">3 tuần</option>
                             <option value="4 tuần">4 tuần</option>
-                            <option value="5 tuần">5 tuần</option>
-                            <option value="6 tuần">6 tuần</option>
-                            <option value="7 tuần">7 tuần</option>
                         </select>
                         <label>Thời gian đi</label>
                     </div>
@@ -424,7 +421,7 @@
                             <span class="caret">▼</span>
                             <a id="aKenh" class="dropdown-button select-dropdown" href="#" data-activates="kenh"></a>
                         </div>
-                        <ul id="kenh" class="dropdown-content validate">
+                        <ul id="kenh" name="kenh[]" class="dropdown-content validate kenh">
                             <li>
                                 <input type="checkbox" id="fbvn" name="kenh[]" value="Facebook SunriseVietnam"/>
                                 <label for="fbvn">Facebook SunriseVietnam</label>
@@ -475,7 +472,7 @@
                 </div>
                 <div class="col s12 m11 offset-m1 form-btn">
                     <button class="col s5 waves-effect waves-green btn left" type="submit">Đăng Ký</button>
-                    <button class="col s5 offset-s1 waves-effect waves-purple btn left" type="reset">Nhập Lại</button>
+                    <button class="col s5 offset-s1 waves-effect waves-purple btn left" type="reset" onclick="return resetForm()">Nhập Lại</button>
                 </div>
             </form>
         </div>
@@ -484,7 +481,6 @@
 <!--modal-->
 <!--Import jQuery before materialize.js-->
 </body>
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/init.js"></script>
@@ -505,29 +501,29 @@
                 $('#ctdh').text(values.length + ' lựa chọn');
             }
         });
-        $("input[name='chk[]']:checked").on('change', function () {
+        $("input[name='chk[]']").on('change', function () {
             var values = [];
             $("input[name='chk[]']:checked").each(function () {
                 values.push($(this).val())
             });
+            $('#a_hinhthucdh').attr('data-values', values);
             if (values.length <= 2) {
-                $('#ctdh').text(values.join(', '));
+                $('#a_hinhthucdh').text(values.join(', '));
             } else {
-                $('#ctdh').text(values.length + ' lựa chọn');
+                $('#a_hinhthucdh').text(values.length + ' lựa chọn');
             }
         });
-        $("input[name='dh[]']").on('change', function () {
+        $("input[name='kenh[]']").on('change', function () {
             var values = [];
-            $("input[name='dh[]']:checked").each(function () {
+            $("input[name='kenh[]']:checked").each(function () {
                 values.push($(this).val())
             });
-            if (values.length <= 2) {
-                $('#ctdh').text(values.join(', '));
+            if (values.length <= 1) {
+                $('#aKenh').text(values.join(', '));
             } else {
-                $('#ctdh').text(values.length + ' lựa chọn');
+                $('#aKenh').text(values.length + ' lựa chọn');
             }
         });
-
         $('.modal-trigger').leanModal({
                     dismissible: true, // Modal can be dismissed by clicking outside of the modal
                     opacity: .5, // Opacity of modal background
@@ -633,30 +629,26 @@
     });
 </script>
 <script>
-    function checkbx() {
-        jQuery("input[name='dh[]']:checked").each(function () {
-            form.ctdh.value = jQuery(this).val();
-        });
-    }
-    /*var ddoptions = $('<ul id="chuongtrinh" class="dropdown-content validate"></ul>');
-     var dropdownOptions = $select.children('option');
-     dropdownOptions.each(function () {
-     // Add disabled attr if disabled
-     ddoptions.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
-     });
-     ddoptions.find('li').each(function (i) {
-     var $curr_select = $select;
-     $(this).click(function () {
-     // Check if option element is disabled
-     if (!$(this).hasClass('disabled')) {
-     $curr_select.find('option').eq(i).prop('selected', true);
-     // Trigger onchange() event
-     $curr_select.trigger('change');
-     $curr_select.siblings('input.select-dropdown').val($(this).text());
-     if (typeof callback !== 'undefined') callback();
-     }
-     });
-
-     });*/
+    function resetForm() {
+        ctdh.text = "";
+        a_hinhthucdh.text = "";
+        aKenh.text = "";}
+</script>
+<script>
+    $('ul.dropdown-content.validate.chuongtrinh').on('click', function(event){
+        // The event won't be propagated up to the document NODE and
+        // therefore delegated events won't be fired
+        event.stopPropagation();
+    });
+    $('ul.dropdown-content.validate.hinhthucdh').on('click', function(event){
+        // The event won't be propagated up to the document NODE and
+        // therefore delegated events won't be fired
+        event.stopPropagation();
+    });
+    $('ul.dropdown-content.validate.kenh').on('click', function(event){
+        // The event won't be propagated up to the document NODE and
+        // therefore delegated events won't be fired
+        event.stopPropagation();
+    });
 </script>
 </html>

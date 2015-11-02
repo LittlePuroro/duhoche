@@ -596,7 +596,7 @@ else {
         }
         // If origin is clicked and menu is open, close menu
         else {
-          if (origin.hasClass('active')) {
+          if (origin.hasClass('active') && !origin.hasClass('ctdh')) {
             hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
           }
