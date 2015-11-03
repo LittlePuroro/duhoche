@@ -6,14 +6,15 @@
   font-family: "myriadpro-bold";
   src: url("../font/myriadpro/MYRIADPRO-BOLD.OTF");  }
 /*-----------common----------------*/
-body {
-}
 body, #logo-container {
   font-family: "myriadpro-regular";
   color: #4c2c06;
   background-color: white}
-.space {
-  min-height: 40px;
+@media only screen and (min-width: 993px) {
+  .space {
+    min-height: 55px;
+  }
+
 }
 /*------------text-------------------*/
 h4, .menu, .intro p, .info p, h5, .banner-dk, .btn-dk, #logo-container {
@@ -42,23 +43,32 @@ h4, .intro p, .info p {
 }
 /*----------------header--------------------*/
 .prc-header{
-  height: 1650px;
-  margin-bottom: 10px;  }
+  height: 1370px;
+  margin-bottom: 10px;
+}
 .header-space {
-  min-height: 800px;  }
+  min-height: 610px;  }
+.pr-header {
+  width: 100%;
+}
 /*----------------menu--------------------*/
 @media only screen and (min-width: 993px) {
+  .menu {
+    z-index: 999;
+    height: 55px;
+  }
   nav {
-    background-color: #4ab9d5;
+    background-color: #4ab9d6;
     border: none;
-    box-shadow: none;  }
+    box-shadow: none;
+  }
   .menu a:first-child {
     margin-left: 0;  }
   .menu a {
     margin-left: 60px;
     border-radius: 5px;
     font-size: 22px}
-  .f-nav{
+  .menu.f-nav{
     z-index: 99999;
     position: fixed;
     top: 0;  }
@@ -78,12 +88,18 @@ h4, .intro p, .info p {
   .intro {
     background-color: #64B5F6;  }
   .prc-banner{
-    height: 480px;
+    height: 450px;
     margin-bottom: 10px;  }
 }
 @media only screen and (min-width: 993px) {
-  .prc-banner{
-    height: 600px;  }
+  .prc-banner {
+    height: 530px;
+  }
+  #banner-my, #banner-anh, #banner-sing {
+    height: 530px;
+    background-color: #ffd802;
+    padding: 20px;
+  }
 }
 /*-----------------khu du hoc he ----------------------*/
 .khudhh-intro, .loiich-intro, .hinhanh-intro {
@@ -153,4 +169,23 @@ a.select-dropdown {
   padding: 0;
   display: block;
   color:#4c2c06 }
-
+/*------------thank you ----------------*/
+.tk-main {
+  color: #305196;
+  margin-bottom: 0 ;
+}
+.tk-space {
+  min-height: 20px;
+}
+.tk-footer {
+  text-align: center;}
+@media only screen and (max-width: 600px) {
+  .tk-header .bigimg {
+    display: none;    }
+  .tk-footer .s12 img {
+    margin: 0 auto 10px auto;    }
+}
+@media only screen and (min-width: 601px) {
+  .tk-header .smallimg {
+    display: none;    }
+}
