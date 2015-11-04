@@ -1,9 +1,9 @@
 /**
  * Created by Phuong Anh Nguyen on 10/29/2015.
  */
-//window.EVENTCODE="jKepl_Rc6JlyH09ipVtvU3WS_vLeQZpCHQuJ5ohfjr6";
+window.EVENTCODE="JpiI-L7mLwj8jFtCmlSLnd9f1mUnPbGavCvmaI6blOV";
 $(document).ready(function(){
-    //var client = new Asteroid('system.sunrisevietnam.com');
+    var client = new Asteroid('system.sunrisevietnam.com');
     $('.modal-trigger').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
         opacity: .5, // Opacity of modal background
@@ -25,7 +25,7 @@ $(document).ready(function(){
     $('ul.dropdown-content.validate.chuongtrinh').on('click', function(event){
         event.stopPropagation();
     });
-    $('ul.dropdown-content.validate.hinhthucdh').on('click', function(event){
+    $('ul.dropdown-content.validate.hinhthucduhoc').on('click', function(event){
         event.stopPropagation();
     });
     $('ul.dropdown-content.validate.kenh').on('click', function(event){
@@ -38,7 +38,7 @@ $(document).ready(function(){
             var email = $("#email").val();
             var nguoidangkyla = $("#danhtinh").val();
             var chuongtrinh = "";
-            var hinhthucdh = "";
+            var hinhthucduhoc = "";
             var thoigianduhoc = $("#tgduhoc").val();
             var thanhphodangsong = $("#diachi").val();
             var bietchuongtrinhquakenh = "";
@@ -49,10 +49,10 @@ $(document).ready(function(){
                 chuongtrinh = chuongtrinh.substring(1);
             }
             jQuery("input[name='chk[]']:checked").each(function () {
-                hinhthucdh = hinhthucdh + ', ' + jQuery(this).val();
+                hinhthucduhoc = hinhthucduhoc + ', ' + jQuery(this).val();
             });
-            if (hinhthucdh.length > 1) {
-                hinhthucdh = hinhthucdh.substring(1);
+            if (hinhthucduhoc.length > 1) {
+                hinhthucduhoc = hinhthucduhoc.substring(1);
             }
             jQuery("input[name='kenh[]']:checked").each(function () {
                 bietchuongtrinhquakenh = bietchuongtrinhquakenh + ', ' + jQuery(this).val();
@@ -60,36 +60,36 @@ $(document).ready(function(){
             if (bietchuongtrinhquakenh.length > 1) {
                 bietchuongtrinhquakenh = bietchuongtrinhquakenh.substring(1);
             }
-            if(hovaten && sodienthoai && email && thanhphodangsong && nguoidangkyla && chuongtrinh && hinhthucdh && thoigianduhoc && bietchuongtrinhquakenh) {
+            if(hovaten && sodienthoai && email && thanhphodangsong && nguoidangkyla && chuongtrinh && hinhthucduhoc && thoigianduhoc && bietchuongtrinhquakenh) {
                 var obj = {
                     hovaten: hovaten,
                     sodienthoai: sodienthoai,
                     email: email,
                     thanhphodangsong: thanhphodangsong,
                     nguoidangkyla: nguoidangkyla,
-                    chuongtrinh: chuongtrinh,
-                    hinhthucdh: hinhthucdh,
+                    chuongtrinh: chuongtrinh.split(",").map(function(i){return i.trim()}),
+                    hinhthucduhoc: hinhthucduhoc.split(",").map(function(i){return i.trim()}),
                     thoigianduhoc: thoigianduhoc,
-                    bietchuongtrinhquakenh: bietchuongtrinhquakenh
+                    bietchuongtrinhquakenh: bietchuongtrinhquakenh.split(",").map(function(i){return i.trim()})
                 }
                 console.log(obj);
                 //window.location.href = '/thankyou.html';
-                /*var ret = client.call('registerEventGLVH', window.EVENTCODE, obj);
+                var ret = client.call('registerEventGLVH', window.EVENTCODE, obj);
                 ret.result
                     .then(function (result) {
                         if(result && result !== 'FAILED'){
-                            /!*analytics.identify(result, {
+                            /*analytics.identify(result, {
                              name : obj.hovaten,
                              email : obj.email,
                              phone : obj.sodienthoai
                              },{
                              anonymousId : analytics.user().anonymousId()
-                             });*!/
+                             });*/
                             window.location.href = '/thankyou.html';
                         }
                     }).catch(function (error) {
                         console.error('Error:', error);
-                    });*/
+                    });
             }
             else {alert("Chua nhap du thong tin")};
             return false;
