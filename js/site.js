@@ -3,7 +3,7 @@
  */
 window.EVENTCODE="JpiI-L7mLwj8jFtCmlSLnd9f1mUnPbGavCvmaI6blOV";
 $(document).ready(function(){
-    var client = new Asteroid('system.sunrisevietnam.com');
+    var client = new Asteroid('localhost:3000');
     $('.modal-trigger').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
         opacity: .5, // Opacity of modal background

@@ -14,12 +14,11 @@ body, #logo-container {
   .space {
     min-height: 55px;
   }
-
 }
 /*------------text-------------------*/
-h4, .menu, .intro p, .info p, h5, .banner-dk, .btn-dk, #logo-container {
+h4, h5, h6, .menu, .intro p, .info p, .loiich-info p, .banner-dk, .btn-dk, #logo-container {
   font-weight: bold;  }
-h4, .intro p, .info p {
+h4, h6, .intro p, .info p {
   text-align: center;  }
 .intro p {
   color: white;  }
@@ -27,23 +26,29 @@ h4, .intro p, .info p {
   margin: 0;  }
 @media only screen and (max-width: 600px) {
   .loiich-info p {font-size: 18px;}
-  .intro p, .nav-wrapper a {font-size: 20px;}
-  .info p {font-size: 24px;}
+  .intro p, .info p, .nav-wrapper a {font-size: 20px;}
+  .info h6 {font-size: 24px;}
   h4 {font-size: 28px;}
   h5 {font-size: 14.5px;}
   .footer p, .footer a {font-size: 12.5px;}
 }
 @media only screen and (min-width: 601px) {
   .loiich-info p {font-size: 20px;}
-  .intro p {font-size: 22px;}
-  .info p {font-size: 26px;}
+  .intro p, .info p {font-size: 22px;}
+  .info h6 {font-size: 26px;}
   h4 {font-size: 30px;}
   h5 {font-size: 16px;}
+  h6 {
+    margin-bottom: 22px;
+    margin-top: 22px;  }
   .footer p, .footer a {font-size: 14.5px;}
 }
 /*----------------header--------------------*/
+.parallax img {
+  top: 0
+}
 .prc-header{
-  height: 1370px;
+  height: 1390px;
   margin-bottom: 10px;
 }
 .header-space {
@@ -55,13 +60,11 @@ h4, .intro p, .info p {
 @media only screen and (min-width: 993px) {
   .menu {
     z-index: 999;
-    height: 55px;
-  }
+    height: 55px;  }
   nav {
     background-color: #4ab9d6;
     border: none;
-    box-shadow: none;
-  }
+    box-shadow: none;  }
   .menu a:first-child {
     margin-left: 0;  }
   .menu a {
@@ -74,7 +77,8 @@ h4, .intro p, .info p {
     top: 0;  }
 }
 .button-collapse {
-  color: #64B5F6;  }
+  color: #64B5F6;
+}
 .menu-btn {
   background-color: #06797e;  }
 /*---------------banner-------------------*/
@@ -88,18 +92,12 @@ h4, .intro p, .info p {
   .intro {
     background-color: #64B5F6;  }
   .prc-banner{
-    height: 450px;
+    height: 530px;
     margin-bottom: 10px;  }
 }
 @media only screen and (min-width: 993px) {
   .prc-banner {
-    height: 530px;
-  }
-  #banner-my, #banner-anh, #banner-sing {
-    height: 530px;
-    background-color: #ffd802;
-    padding: 20px;
-  }
+    height: 550px;  }
 }
 /*-----------------khu du hoc he ----------------------*/
 .khudhh-intro, .loiich-intro, .hinhanh-intro {
@@ -142,8 +140,8 @@ h4, .intro p, .info p {
 .footer, .footer a {
   text-transform: uppercase;
   color: white;
-padding-bottom: 0;
-margin-bottom: 0}
+  padding-bottom: 0;
+  margin-bottom: 0}
 /*-----------modal-------------*/
 .modal-header {
   padding: 9px 20px 0 20px;  }
